@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+
+mainClassName = 'acrostic.Main'
+
+repositories {
+    jcenter()
+    mavenCentral()    
+}
+
+dependencies {
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.4.1')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.1')
+    testCompile('org.junit.jupiter:junit-jupiter-api:5.4.1')
+    compile(project(':MyLib'))
+    compile files('lib')
+}
+
+test{
+    useJUnitPlatform()    
+}
+
+jar{
+    manifest{
+        attributes 'Main-Class': 'acrostic.Main'
+    }
+}
